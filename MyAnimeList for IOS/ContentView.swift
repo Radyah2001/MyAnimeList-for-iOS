@@ -6,10 +6,22 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct ContentView: View{
+    @State private var bgColor = Color.white
+    
     var body: some View {
         NavigationView{
             VStack {
+                Button("Change Color") {
+                    if bgColor == Color("Color1"){
+                        bgColor = Color.white
+                    } else { bgColor = Color("Color1")
+                    }
+                }
+                .padding()
+                .foregroundColor(.white)
+                .background(Color.blue)
+                .cornerRadius(10)
                 HStack {
                     Button(action: {
                         // do nothing, since this is already the current view
@@ -43,13 +55,11 @@ struct ContentView: View {
                 }
             }
             .navigationTitle("Home")
+            .background(bgColor)
             
             
             Spacer()
         }
-        .frame(maxWidth:.infinity,maxHeight: .infinity)
-        .background(Color("Color1"))
-        .tint(Color.black)
     }
 }
 
