@@ -39,6 +39,11 @@ struct ContentView: View {
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, 20)
                 .padding(.top, 20)
+            NavigationView{
+                VStack{
+                    NavigationLink(destination: SearchView()){Text("Search")}
+                }
+            }
             
             Spacer()
         }
