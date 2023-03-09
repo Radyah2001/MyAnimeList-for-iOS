@@ -39,7 +39,7 @@ struct SearchView: View {
                         }
                     }
                     .navigationTitle("Anime Search")
-                    
+                
                 }
             }
         }
