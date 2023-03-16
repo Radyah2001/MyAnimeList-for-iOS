@@ -7,41 +7,126 @@
 import SwiftUI
 
 struct ContentView: View {
+    @ObservedObject var searchObjController = SearchObjController.shared
     var body: some View {
         NavigationView{
-            VStack {
-                HStack {
-                    Button(action: {
-                        // do nothing, since this is already the current view
-                    }) {
-                        Image("MAL")
-                            .resizable()
-                            .font(.title)
-                            .scaledToFit()
-                            .foregroundColor(.blue)
-                            .frame(width:40, height: 40)
-                            .padding()
-                    }
-                    Text("MyAnimeList")
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
-                        .padding(.bottom, 5)
-                        .padding(.leading, 20)
-                    Spacer()
-                    NavigationLink(destination: SearchView()) {
-                        Image(systemName: "magnifyingglass")
+            ScrollView(.vertical, showsIndicators: false) {
+                VStack {
+                    HStack {
+                        Button(action: {
+                            // do nothing, since this is already the current view
+                        }) {
+                            Image("MAL")
+                                .resizable()
+                                .font(.title)
+                                .scaledToFit()
+                                .foregroundColor(.blue)
+                                .frame(width:40, height: 40)
+                                .padding()
+                        }
+                        Text("MyAnimeList")
                             .font(.largeTitle)
-                            .foregroundColor(.blue)
+                            .fontWeight(.bold)
+                            .padding(.bottom, 5)
+                            .padding(.leading, 20)
+                        Spacer()
+                        NavigationLink(destination: SearchView()) {
+                            Image(systemName: "magnifyingglass")
+                                .font(.largeTitle)
+                                .foregroundColor(.blue)
+                        }
+                        Spacer()
                     }
-                    Spacer()
+                    VStack{
+                        Text("Top Anime")
+                            .font(.title)
+                            .padding(.bottom, 4)
+                        
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            LazyHStack(spacing: 20) {
+                                ForEach(searchObjController.topAnime, id: \.node.id) { animeNode in
+                                    NavigationLink(destination: AnimeDetailView(animeId: animeNode.node.id ?? 1)){
+                                        AnimeCard(anime: animeNode)
+                                    }
+                                }
+                            }.padding(.horizontal)
+                        }
+                        .onAppear {
+                            if searchObjController.topAnime.isEmpty{
+                                Task {
+                                    do {
+                                        try await searchObjController.getTrendingAnime()
+                                    } catch {
+                                        print("Error fetching trending anime: \(error.localizedDescription)")
+                                    }
+                                }
+                            }
+                        }
+                    }.fixedSize(horizontal: false, vertical: true)
+                    
+                    VStack{
+                        Text("Top Upcoming Anime")
+                            .font(.title)
+                            .padding(.bottom, 4)
+                        
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            LazyHStack(spacing: 20) {
+                                ForEach(searchObjController.upcomingAnime, id: \.node.id) { animeNode in
+                                    NavigationLink(destination: AnimeDetailView(animeId: animeNode.node.id ?? 1)){
+                                        AnimeCard(anime: animeNode)
+                                    }
+                                }
+                            }.padding(.horizontal)
+                        }
+                        .onAppear {
+                            if searchObjController.upcomingAnime.isEmpty {
+                                Task {
+                                    do {
+                                        try await searchObjController.getUpcomingAnime()
+                                    } catch {
+                                        print("Error fetching trending anime: \(error.localizedDescription)")
+                                    }
+                                }
+                            }
+                        }
+                    }.fixedSize(horizontal: false, vertical: true)
+                    
+                    VStack{
+                        Text("Top Airing Anime")
+                            .font(.title)
+                            .padding(.bottom, 4)
+                        
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            LazyHStack(spacing: 20) {
+                                ForEach(searchObjController.airingAnime, id: \.node.id) { animeNode in
+                                    NavigationLink(destination: AnimeDetailView(animeId: animeNode.node.id ?? 1)){
+                                        AnimeCard(anime: animeNode)
+                                    }
+                                }
+                            }.padding(.horizontal)
+                        }
+                        .onAppear {
+                            if searchObjController.airingAnime.isEmpty{
+                                Task {
+                                    do {
+                                        try await searchObjController.getAiringAnime()
+                                    } catch {
+                                        print("Error fetching trending anime: \(error.localizedDescription)")
+                                    }
+                                }
+                            }
+                        }
+                    }.fixedSize(horizontal: false, vertical: true)
                 }
-                ScrollView{
-                    Image("MAL")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 100, height: 100)
-                }
+                     
+                
+                            
+                        
+                 
+                
+
             }
+                     
             .navigationTitle("Home")
             
             
@@ -50,6 +135,45 @@ struct ContentView: View {
         .frame(maxWidth:.infinity,maxHeight: .infinity)
         .background(Color("Color1"))
         .tint(Color.black)
+    }
+}
+
+struct AnimeCard: View {
+    var anime: NodeTop
+
+    var body: some View {
+        VStack(alignment: .leading) {
+            if let urlString = anime.node.main_picture?.large,
+                           let url = URL(string: urlString) {
+                            AsyncImage(url: url) { phase in
+                                if let image = phase.image {
+                                    image
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 120, height: 180)
+                                        .cornerRadius(10)
+                                } else {
+                                    Image("MAL")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 120, height: 180)
+                                        .cornerRadius(10)
+                                }
+                            }
+                        }
+
+            Text(anime.node.title ?? "Unknown")
+                .font(.headline)
+                .lineLimit(2)
+                .padding(.top, 4)
+                .frame(maxWidth: 120, alignment: .leading)
+            
+            Text(anime.ranking.rank?.description ?? "Unknown")
+                .font(.headline)
+                .lineLimit(2)
+                .padding(.top, 4)
+                .frame(maxWidth: 120, alignment: .leading)
+        }
     }
 }
 

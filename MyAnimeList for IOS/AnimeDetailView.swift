@@ -28,7 +28,7 @@ struct AnimeDetailView: View {
                         Text("Average score: \(animeDetails.mean?.description ?? "Unknown")")
                         Text("Rank: \(animeDetails.rank?.description ?? "Unknown")")
                         Text("Popularity: \(animeDetails.popularity?.description ?? "Unknown")")
-                        Text("Status: \(animeDetails.status?.capitalized ?? "Unknown")")
+                        Text("Status: \(animeDetails.status?.capitalized.replacingOccurrences(of: "_", with: " ") ?? "Unknown")")
                         if let genres = animeDetails.genres {
                             Text("Genres: \(genres.map { $0.name ?? "" }.joined(separator: ", "))")
                         }

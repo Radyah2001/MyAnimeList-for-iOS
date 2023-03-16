@@ -10,11 +10,14 @@ import Foundation
 struct AnimeList: Codable {
     var data: [Node]
 }
+struct AnimeListTrending: Codable {
+    var data: [NodeTop]
+}
 
-struct Node: Codable {
+struct NodeTop: Codable {
     var node: Anime
-    
-    struct Anime: Codable {
+    var ranking: Ranking
+    struct Anime: Codable, Identifiable {
         var id: Int?
         var title: String?
         var main_picture: MainPicture?
@@ -28,6 +31,25 @@ struct Node: Codable {
     
 }
 
+struct Node: Codable {
+    var node: Anime
+    struct Anime: Codable, Identifiable {
+        var id: Int?
+        var title: String?
+        var main_picture: MainPicture?
+        
+        struct MainPicture: Codable {
+            var medium: String
+            var large: String
+        }
+        
+    }
+    
+}
+
+struct Ranking: Codable {
+    var rank: Int?
+}
 
 struct AnimeDetails: Codable {
     var id: Int?
@@ -88,6 +110,11 @@ class SearchObjController: ObservableObject {
         }
     }
     @Published var details: AnimeDetails
+    @Published var topAnime: [NodeTop] = []
+    @Published var airingAnime: [NodeTop] = []
+    @Published var upcomingAnime: [NodeTop] = []
+    
+    
     
     func getAnimeDetails(id: Int) async throws {
         let urlString = "https://api.myanimelist.net/v2/anime/\(id)?fields=id,title,main_picture,synopsis,mean,rank,popularity,genres,num_episodes,rating,statistics,status"
@@ -113,9 +140,76 @@ class SearchObjController: ObservableObject {
         
     }
     
+    func getTrendingAnime() async throws {
+        let urlString = "https://api.myanimelist.net/v2/anime/ranking?ranking_type=all&limit=10"
+        guard let url = URL(string: urlString) else {
+            throw APIError.invalidURL
+        }
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        request.setValue("\(token)", forHTTPHeaderField: "X-MAL-CLIENT-ID")
+        
+        let (data, response) = try await URLSession.shared.data(for: request)
+        
+        guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+            throw APIError.invalidResponse
+        }
+        Task {@MainActor in
+            let res = try JSONDecoder().decode(AnimeListTrending.self, from: data)
+            self.topAnime.append(contentsOf: res.data)
+        }
+        
+        
+    }
+    func getUpcomingAnime() async throws {
+        let urlString = "https://api.myanimelist.net/v2/anime/ranking?ranking_type=upcoming&limit=10"
+        guard let url = URL(string: urlString) else {
+            throw APIError.invalidURL
+        }
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        request.setValue("\(token)", forHTTPHeaderField: "X-MAL-CLIENT-ID")
+        
+        let (data, response) = try await URLSession.shared.data(for: request)
+        
+        guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+            throw APIError.invalidResponse
+        }
+        Task {@MainActor in
+            let res = try JSONDecoder().decode(AnimeListTrending.self, from: data)
+            self.upcomingAnime.append(contentsOf: res.data)
+        }
+        
+        
+    }
+    func getAiringAnime() async throws {
+        let urlString = "https://api.myanimelist.net/v2/anime/ranking?ranking_type=airing&limit=10"
+        guard let url = URL(string: urlString) else {
+            throw APIError.invalidURL
+        }
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        request.setValue("\(token)", forHTTPHeaderField: "X-MAL-CLIENT-ID")
+        
+        let (data, response) = try await URLSession.shared.data(for: request)
+        
+        guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+            throw APIError.invalidResponse
+        }
+        Task {@MainActor in
+            let res = try JSONDecoder().decode(AnimeListTrending.self, from: data)
+            self.airingAnime.append(contentsOf: res.data)
+        }
+        
+        
+    }
+    
     func search(){
         query = query.replacingOccurrences(of: " ", with: "_")
-        guard let listUrl = URL(string: "https://api.myanimelist.net/v2/anime?q=\(query)&limit=4") else { fatalError("Missing URL") }
+        guard let listUrl = URL(string: "https://api.myanimelist.net/v2/anime?q=\(query)&limit=20") else { fatalError("Missing URL") }
         var request = URLRequest(url: listUrl)
         request.httpMethod = "GET"
         request.setValue("\(token)", forHTTPHeaderField: "X-MAL-CLIENT-ID")
