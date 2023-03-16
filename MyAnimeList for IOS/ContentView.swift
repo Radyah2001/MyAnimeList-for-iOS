@@ -128,11 +128,13 @@ struct ContentView: View {
             }
                      
             .navigationTitle("Home")
-            .background(bgColor)
             
             
             Spacer()
         }
+        .frame(maxWidth:.infinity,maxHeight: .infinity)
+        .background(Color("Color1"))
+        .tint(Color.black)
     }
 }
 
