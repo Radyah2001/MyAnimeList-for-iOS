@@ -13,7 +13,7 @@ struct SearchView: View {
     
     var body: some View {
         VStack {
-            NavigationView{
+            NavigationStack{
                 VStack{
                     TextField("Search anime", text: $searchController.query, onCommit: {
                         searchController.search()

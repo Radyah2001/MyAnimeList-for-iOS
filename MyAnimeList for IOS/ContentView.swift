@@ -9,7 +9,7 @@ import SwiftUI
 struct ContentView: View {
     @ObservedObject var searchObjController = SearchObjController.shared
     var body: some View {
-        NavigationView{
+        NavigationStack{
             ScrollView(.vertical, showsIndicators: false) {
                 VStack {
                     HStack {
