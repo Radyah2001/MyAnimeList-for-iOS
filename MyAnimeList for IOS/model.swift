@@ -114,7 +114,9 @@ class SearchObjController: ObservableObject {
     @Published var airingAnime: [NodeTop] = []
     @Published var upcomingAnime: [NodeTop] = []
     
-    
+    func resetDetails() {
+        details = AnimeDetails()
+    }
     
     func getAnimeDetails(id: Int) async throws {
         let urlString = "https://api.myanimelist.net/v2/anime/\(id)?fields=id,title,main_picture,synopsis,mean,rank,popularity,genres,num_episodes,rating,statistics,status"
