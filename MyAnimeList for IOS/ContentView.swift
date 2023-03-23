@@ -167,12 +167,6 @@ struct AnimeCard: View {
                 .lineLimit(2)
                 .padding(.top, 4)
                 .frame(maxWidth: 120, alignment: .leading)
-            
-            Text(anime.ranking.rank?.description ?? "Unknown")
-                .font(.headline)
-                .lineLimit(2)
-                .padding(.top, 4)
-                .frame(maxWidth: 120, alignment: .leading)
         }
     }
 }

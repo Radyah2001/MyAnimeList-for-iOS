@@ -29,7 +29,7 @@ struct AnimeDetailView: View {
                                             image
                                                 .resizable()
                                                 .scaledToFit()
-                                                .frame(width: 80, height: 120)
+                                                .frame(width: 240, height: 360)
                                                 .padding(.trailing, 8)
                                         }
                                     }
@@ -103,10 +103,10 @@ struct AnimeDetailView: View {
     }
 }
 
-/*
+
  struct AnimeDetailView_Previews: PreviewProvider {
  static var previews: some View {
- AnimeDetailView()
+ AnimeDetailView(animeId: 1)
  }
  }
- */
+ 
