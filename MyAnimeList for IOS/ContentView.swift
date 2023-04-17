@@ -5,8 +5,10 @@
 //  Created by Haydar Bahr/ Abbas Kassem on 16/02/2023.
 
 import SwiftUI
+import AuthenticationServices
 
 struct ContentView: View {
+    @EnvironmentObject var authManager: AuthManager
     @ObservedObject var searchObjController = SearchObjController.shared
     var body: some View {
         NavigationStack{
@@ -14,7 +16,7 @@ struct ContentView: View {
                 VStack {
                     HStack {
                         Button(action: {
-                            // do nothing, since this is already the current view
+                            authManager.authorize()
                         }) {
                             Image("MAL")
                                 .resizable()

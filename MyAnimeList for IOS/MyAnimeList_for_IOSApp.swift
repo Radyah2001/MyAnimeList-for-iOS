@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct MyAnimeList_for_IOSApp: App {
+    @StateObject private var authManager = AuthManager()
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView().environmentObject(authManager).onOpenURL{
+                url in authManager.handleCallbackURL(url: url)
+            }
         }
     }
 }
