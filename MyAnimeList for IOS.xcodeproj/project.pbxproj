@@ -15,7 +15,27 @@
 		A1798D7329BA1D0A00D45C01 /* AnimeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1798D7229BA1D0A00D45C01 /* AnimeDetailView.swift */; };
 		A1798D7529BA1D5500D45C01 /* model.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1798D7429BA1D5500D45C01 /* model.swift */; };
 		A17C9C0129ECC67100AD07FC /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17C9C0029ECC67100AD07FC /* AuthManager.swift */; };
+		A17D091029F16CFC0018B0BD /* MyAnimeList_for_IOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17D090F29F16CFC0018B0BD /* MyAnimeList_for_IOSTests.swift */; };
+		A17D091D29F16D0F0018B0BD /* MyAnimeList_for_IOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17D091C29F16D0F0018B0BD /* MyAnimeList_for_IOSUITests.swift */; };
+		A17D091F29F16D0F0018B0BD /* MyAnimeList_for_IOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17D091E29F16D0F0018B0BD /* MyAnimeList_for_IOSUITestsLaunchTests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A17D091129F16CFC0018B0BD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A11457B5299E744900AE88A5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A11457BC299E744900AE88A5;
+			remoteInfo = "MyAnimeList for IOS";
+		};
+		A17D092029F16D0F0018B0BD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A11457B5299E744900AE88A5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A11457BC299E744900AE88A5;
+			remoteInfo = "MyAnimeList for IOS";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		A11457BD299E744900AE88A5 /* MyAnimeList for IOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MyAnimeList for IOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -28,10 +48,29 @@
 		A1798D7429BA1D5500D45C01 /* model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = model.swift; sourceTree = "<group>"; };
 		A17C9BFF29ECC55400AD07FC /* MyAnimeList-for-IOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "MyAnimeList-for-IOS-Info.plist"; sourceTree = SOURCE_ROOT; };
 		A17C9C0029ECC67100AD07FC /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		A17D090D29F16CFC0018B0BD /* MyAnimeList for IOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MyAnimeList for IOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A17D090F29F16CFC0018B0BD /* MyAnimeList_for_IOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAnimeList_for_IOSTests.swift; sourceTree = "<group>"; };
+		A17D091A29F16D0F0018B0BD /* MyAnimeList for IOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MyAnimeList for IOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A17D091C29F16D0F0018B0BD /* MyAnimeList_for_IOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAnimeList_for_IOSUITests.swift; sourceTree = "<group>"; };
+		A17D091E29F16D0F0018B0BD /* MyAnimeList_for_IOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAnimeList_for_IOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		A11457BA299E744900AE88A5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A17D090A29F16CFB0018B0BD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A17D091729F16D0F0018B0BD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -45,6 +84,8 @@
 			isa = PBXGroup;
 			children = (
 				A11457BF299E744900AE88A5 /* MyAnimeList for IOS */,
+				A17D090E29F16CFC0018B0BD /* MyAnimeList for IOSTests */,
+				A17D091B29F16D0F0018B0BD /* MyAnimeList for IOSUITests */,
 				A11457BE299E744900AE88A5 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -53,6 +94,8 @@
 			isa = PBXGroup;
 			children = (
 				A11457BD299E744900AE88A5 /* MyAnimeList for IOS.app */,
+				A17D090D29F16CFC0018B0BD /* MyAnimeList for IOSTests.xctest */,
+				A17D091A29F16D0F0018B0BD /* MyAnimeList for IOSUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -81,6 +124,23 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		A17D090E29F16CFC0018B0BD /* MyAnimeList for IOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				A17D090F29F16CFC0018B0BD /* MyAnimeList_for_IOSTests.swift */,
+			);
+			path = "MyAnimeList for IOSTests";
+			sourceTree = "<group>";
+		};
+		A17D091B29F16D0F0018B0BD /* MyAnimeList for IOSUITests */ = {
+			isa = PBXGroup;
+			children = (
+				A17D091C29F16D0F0018B0BD /* MyAnimeList_for_IOSUITests.swift */,
+				A17D091E29F16D0F0018B0BD /* MyAnimeList_for_IOSUITestsLaunchTests.swift */,
+			);
+			path = "MyAnimeList for IOSUITests";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -101,6 +161,42 @@
 			productReference = A11457BD299E744900AE88A5 /* MyAnimeList for IOS.app */;
 			productType = "com.apple.product-type.application";
 		};
+		A17D090C29F16CFB0018B0BD /* MyAnimeList for IOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A17D091529F16CFC0018B0BD /* Build configuration list for PBXNativeTarget "MyAnimeList for IOSTests" */;
+			buildPhases = (
+				A17D090929F16CFB0018B0BD /* Sources */,
+				A17D090A29F16CFB0018B0BD /* Frameworks */,
+				A17D090B29F16CFB0018B0BD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A17D091229F16CFC0018B0BD /* PBXTargetDependency */,
+			);
+			name = "MyAnimeList for IOSTests";
+			productName = "MyAnimeList for IOSTests";
+			productReference = A17D090D29F16CFC0018B0BD /* MyAnimeList for IOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		A17D091929F16D0F0018B0BD /* MyAnimeList for IOSUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A17D092229F16D0F0018B0BD /* Build configuration list for PBXNativeTarget "MyAnimeList for IOSUITests" */;
+			buildPhases = (
+				A17D091629F16D0F0018B0BD /* Sources */,
+				A17D091729F16D0F0018B0BD /* Frameworks */,
+				A17D091829F16D0F0018B0BD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A17D092129F16D0F0018B0BD /* PBXTargetDependency */,
+			);
+			name = "MyAnimeList for IOSUITests";
+			productName = "MyAnimeList for IOSUITests";
+			productReference = A17D091A29F16D0F0018B0BD /* MyAnimeList for IOSUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -113,6 +209,14 @@
 				TargetAttributes = {
 					A11457BC299E744900AE88A5 = {
 						CreatedOnToolsVersion = 14.2;
+					};
+					A17D090C29F16CFB0018B0BD = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = A11457BC299E744900AE88A5;
+					};
+					A17D091929F16D0F0018B0BD = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = A11457BC299E744900AE88A5;
 					};
 				};
 			};
@@ -130,6 +234,8 @@
 			projectRoot = "";
 			targets = (
 				A11457BC299E744900AE88A5 /* MyAnimeList for IOS */,
+				A17D090C29F16CFB0018B0BD /* MyAnimeList for IOSTests */,
+				A17D091929F16D0F0018B0BD /* MyAnimeList for IOSUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -141,6 +247,20 @@
 			files = (
 				A11457C8299E744E00AE88A5 /* Preview Assets.xcassets in Resources */,
 				A11457C5299E744E00AE88A5 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A17D090B29F16CFB0018B0BD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A17D091829F16D0F0018B0BD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -160,7 +280,37 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A17D090929F16CFB0018B0BD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A17D091029F16CFC0018B0BD /* MyAnimeList_for_IOSTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A17D091629F16D0F0018B0BD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A17D091D29F16D0F0018B0BD /* MyAnimeList_for_IOSUITests.swift in Sources */,
+				A17D091F29F16D0F0018B0BD /* MyAnimeList_for_IOSUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A17D091229F16CFC0018B0BD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A11457BC299E744900AE88A5 /* MyAnimeList for IOS */;
+			targetProxy = A17D091129F16CFC0018B0BD /* PBXContainerItemProxy */;
+		};
+		A17D092129F16D0F0018B0BD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A11457BC299E744900AE88A5 /* MyAnimeList for IOS */;
+			targetProxy = A17D092029F16D0F0018B0BD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		A11457C9299E744E00AE88A5 /* Debug */ = {
@@ -337,6 +487,76 @@
 			};
 			name = Release;
 		};
+		A17D091329F16CFC0018B0BD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = TAWG672GCL;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.MyAnimeList-for-IOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyAnimeList for IOS.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MyAnimeList for IOS";
+			};
+			name = Debug;
+		};
+		A17D091429F16CFC0018B0BD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = TAWG672GCL;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.MyAnimeList-for-IOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyAnimeList for IOS.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MyAnimeList for IOS";
+			};
+			name = Release;
+		};
+		A17D092329F16D0F0018B0BD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = TAWG672GCL;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.MyAnimeList-for-IOSUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "MyAnimeList for IOS";
+			};
+			name = Debug;
+		};
+		A17D092429F16D0F0018B0BD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = TAWG672GCL;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.MyAnimeList-for-IOSUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "MyAnimeList for IOS";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -354,6 +574,24 @@
 			buildConfigurations = (
 				A11457CC299E744E00AE88A5 /* Debug */,
 				A11457CD299E744E00AE88A5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A17D091529F16CFC0018B0BD /* Build configuration list for PBXNativeTarget "MyAnimeList for IOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A17D091329F16CFC0018B0BD /* Debug */,
+				A17D091429F16CFC0018B0BD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A17D092229F16D0F0018B0BD /* Build configuration list for PBXNativeTarget "MyAnimeList for IOSUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A17D092329F16D0F0018B0BD /* Debug */,
+				A17D092429F16D0F0018B0BD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
