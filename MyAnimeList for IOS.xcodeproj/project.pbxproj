@@ -11,6 +11,7 @@
 		A11457C3299E744900AE88A5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11457C2299E744900AE88A5 /* ContentView.swift */; };
 		A11457C5299E744E00AE88A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A11457C4299E744E00AE88A5 /* Assets.xcassets */; };
 		A11457C8299E744E00AE88A5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A11457C7299E744E00AE88A5 /* Preview Assets.xcassets */; };
+		A176CFBA29FAA52C00DB3006 /* UserAnimeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A176CFB929FAA52C00DB3006 /* UserAnimeList.swift */; };
 		A1798D7129BA1C6000D45C01 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1798D7029BA1C6000D45C01 /* SearchView.swift */; };
 		A1798D7329BA1D0A00D45C01 /* AnimeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1798D7229BA1D0A00D45C01 /* AnimeDetailView.swift */; };
 		A1798D7529BA1D5500D45C01 /* model.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1798D7429BA1D5500D45C01 /* model.swift */; };
@@ -18,6 +19,9 @@
 		A17D091029F16CFC0018B0BD /* MyAnimeList_for_IOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17D090F29F16CFC0018B0BD /* MyAnimeList_for_IOSTests.swift */; };
 		A17D091D29F16D0F0018B0BD /* MyAnimeList_for_IOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17D091C29F16D0F0018B0BD /* MyAnimeList_for_IOSUITests.swift */; };
 		A17D091F29F16D0F0018B0BD /* MyAnimeList_for_IOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17D091E29F16D0F0018B0BD /* MyAnimeList_for_IOSUITestsLaunchTests.swift */; };
+		A17D092C29F1DFFE0018B0BD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A17D092A29F1DFFE0018B0BD /* Localizable.strings */; };
+		A17D092E29F1E1A50018B0BD /* KeyChainSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17D092D29F1E1A50018B0BD /* KeyChainSwift.swift */; };
+		A17D093029F1E6C00018B0BD /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17D092F29F1E6C00018B0BD /* ProfileView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +47,7 @@
 		A11457C2299E744900AE88A5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A11457C4299E744E00AE88A5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A11457C7299E744E00AE88A5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		A176CFB929FAA52C00DB3006 /* UserAnimeList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAnimeList.swift; sourceTree = "<group>"; };
 		A1798D7029BA1C6000D45C01 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		A1798D7229BA1D0A00D45C01 /* AnimeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeDetailView.swift; sourceTree = "<group>"; };
 		A1798D7429BA1D5500D45C01 /* model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = model.swift; sourceTree = "<group>"; };
@@ -53,6 +58,9 @@
 		A17D091A29F16D0F0018B0BD /* MyAnimeList for IOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MyAnimeList for IOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A17D091C29F16D0F0018B0BD /* MyAnimeList_for_IOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAnimeList_for_IOSUITests.swift; sourceTree = "<group>"; };
 		A17D091E29F16D0F0018B0BD /* MyAnimeList_for_IOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAnimeList_for_IOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		A17D092B29F1DFFE0018B0BD /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A17D092D29F1E1A50018B0BD /* KeyChainSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainSwift.swift; sourceTree = "<group>"; };
+		A17D092F29F1E6C00018B0BD /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,11 +112,15 @@
 			isa = PBXGroup;
 			children = (
 				A17C9BFF29ECC55400AD07FC /* MyAnimeList-for-IOS-Info.plist */,
+				A17D092A29F1DFFE0018B0BD /* Localizable.strings */,
 				A17C9C0029ECC67100AD07FC /* AuthManager.swift */,
 				A1798D7429BA1D5500D45C01 /* model.swift */,
 				A1798D7229BA1D0A00D45C01 /* AnimeDetailView.swift */,
+				A17D092F29F1E6C00018B0BD /* ProfileView.swift */,
 				A1798D7029BA1C6000D45C01 /* SearchView.swift */,
+				A176CFB929FAA52C00DB3006 /* UserAnimeList.swift */,
 				A11457C0299E744900AE88A5 /* MyAnimeList_for_IOSApp.swift */,
+				A17D092D29F1E1A50018B0BD /* KeyChainSwift.swift */,
 				A11457C2299E744900AE88A5 /* ContentView.swift */,
 				A11457C4299E744E00AE88A5 /* Assets.xcassets */,
 				A11457C6299E744E00AE88A5 /* Preview Content */,
@@ -227,8 +239,11 @@
 			knownRegions = (
 				en,
 				Base,
+				da,
 			);
 			mainGroup = A11457B4299E744900AE88A5;
+			packageReferences = (
+			);
 			productRefGroup = A11457BE299E744900AE88A5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -246,6 +261,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A11457C8299E744E00AE88A5 /* Preview Assets.xcassets in Resources */,
+				A17D092C29F1DFFE0018B0BD /* Localizable.strings in Resources */,
 				A11457C5299E744E00AE88A5 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -271,11 +287,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A17D093029F1E6C00018B0BD /* ProfileView.swift in Sources */,
 				A1798D7529BA1D5500D45C01 /* model.swift in Sources */,
 				A17C9C0129ECC67100AD07FC /* AuthManager.swift in Sources */,
 				A1798D7329BA1D0A00D45C01 /* AnimeDetailView.swift in Sources */,
 				A11457C3299E744900AE88A5 /* ContentView.swift in Sources */,
 				A1798D7129BA1C6000D45C01 /* SearchView.swift in Sources */,
+				A17D092E29F1E1A50018B0BD /* KeyChainSwift.swift in Sources */,
+				A176CFBA29FAA52C00DB3006 /* UserAnimeList.swift in Sources */,
 				A11457C1299E744900AE88A5 /* MyAnimeList_for_IOSApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -311,6 +330,18 @@
 			targetProxy = A17D092029F16D0F0018B0BD /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A17D092A29F1DFFE0018B0BD /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A17D092B29F1DFFE0018B0BD /* da */,
+			);
+			name = Localizable.strings;
+			path = ..;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		A11457C9299E744E00AE88A5 /* Debug */ = {

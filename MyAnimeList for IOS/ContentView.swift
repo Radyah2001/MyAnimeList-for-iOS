@@ -10,13 +10,43 @@ import AuthenticationServices
 struct ContentView: View {
     @EnvironmentObject var authManager: AuthManager
     @ObservedObject var searchObjController = SearchObjController.shared
+    @State var isLoggedIn = false
     var body: some View {
         NavigationStack{
             ScrollView(.vertical, showsIndicators: false) {
                 VStack {
                     HStack {
+                        if authManager.isLoggedIn() {
+                            NavigationLink(destination: ProfileView()){
+                                Image(systemName: "person")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .padding()
+                                    .frame(width: 120, height: 120)
+                            }.onAppear{
+                                Task{
+                                    do {
+                                        try await searchObjController.getUserInfo(token: authManager.getAccessToken() ?? "")
+                                    } catch {
+                                        print("Error fetching user info: \(error.localizedDescription)")
+                                    }
+                                }
+                            }
+                        }
+                        else {}
+                        if authManager.isLoggedIn(){
+                            Text("Log Out")
+                                .foregroundColor(.red)
+                                .onTapGesture {
+                                    isLoggedIn = false
+                                }
+                        }
+                    }
+                    HStack {
                         Button(action: {
                             authManager.authorize()
+                            isLoggedIn = true
+                            
                         }) {
                             Image("MAL")
                                 .resizable()

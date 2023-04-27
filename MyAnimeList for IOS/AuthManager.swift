@@ -10,6 +10,7 @@ import SwiftUI
 import AuthenticationServices
 import CryptoKit
 
+
 class AuthManager: NSObject, ObservableObject, ASWebAuthenticationPresentationContextProviding {
     
     private let clientId = "34093f65c502c0fd011391170d76458e"
@@ -23,8 +24,8 @@ class AuthManager: NSObject, ObservableObject, ASWebAuthenticationPresentationCo
         let refresh_token: String
     }
     private var codeVerifier: String?
+    private let keychain = KeychainSwift()
 
-    
     func authorize() {
         let state = UUID().uuidString
         codeVerifier = generateCodeVerifier()
@@ -71,10 +72,6 @@ class AuthManager: NSObject, ObservableObject, ASWebAuthenticationPresentationCo
                     print("No data received")
                     return
                 }
-                // Print the raw data received from the server
-                if let jsonString = String(data: data, encoding: .utf8) {
-                    print("Raw JSON data: \(jsonString)")
-                }
 
                 do {
                     let decoder = JSONDecoder()
@@ -84,6 +81,9 @@ class AuthManager: NSObject, ObservableObject, ASWebAuthenticationPresentationCo
                     // (e.g., UserDefaults, Keychain, etc.)
                     print("Access Token: \(tokenResponse.access_token)")
                     print("Refresh Token: \(tokenResponse.refresh_token)")
+                    
+                    self.keychain.set(tokenResponse.access_token, forKey: "access_token")
+                    self.keychain.set(tokenResponse.refresh_token, forKey: "refresh:token")
 
                 } catch let decodingError {
                     print("Error decoding response: \(decodingError.localizedDescription)")
@@ -132,5 +132,18 @@ class AuthManager: NSObject, ObservableObject, ASWebAuthenticationPresentationCo
         }
         
     }
+    func getAccessToken() -> String? {
+            return keychain.get("access_token")
+        }
+        
+    func getRefreshToken() -> String? {
+            return keychain.get("refresh:token")
+        }
+    func isLoggedIn() -> Bool {
+            return getAccessToken() != nil
+        }
+    func logout() {
+            keychain.delete("access_token")
+        }
 }
 
