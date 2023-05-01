@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct UserAnimeList: View {
+struct UserAnimeListView: View {
     @ObservedObject var searchObjController = SearchObjController.shared
     @EnvironmentObject var authManager: AuthManager
 
@@ -43,7 +43,7 @@ struct UserAnimeList: View {
 
 struct UserAnimeList_Previews: PreviewProvider {
     static var previews: some View {
-        UserAnimeList()
+        UserAnimeListView()
     }
 }
 

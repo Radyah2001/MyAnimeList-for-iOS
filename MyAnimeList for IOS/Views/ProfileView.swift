@@ -9,7 +9,7 @@ struct ProfileView: View {
                 VStack(alignment: .leading, spacing: 20) {
                     UserInfoSection(userInfo: searchController.userInfo)
                     AnimeStatisticsSection(animeStats: searchController.userInfo.anime_statistics)
-                    NavigationLink(destination: UserAnimeList()){
+                    NavigationLink(destination: UserAnimeListView()){
                         Text("Anime User List")
                     }
                 }
