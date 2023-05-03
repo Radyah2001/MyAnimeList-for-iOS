@@ -177,7 +177,7 @@ class SearchObjController: ObservableObject {
         }
     func getUserAnimeList(token: String) async throws {
             
-            let urlString = "https://api.myanimelist.net/v2/users/@me/animelist?fields=list_status&limit=8"
+            let urlString = "https://api.myanimelist.net/v2/users/@me/animelist?fields=list_status&limit=20"
             guard let url = URL(string: urlString) else {
                 throw APIError.invalidURL
             }

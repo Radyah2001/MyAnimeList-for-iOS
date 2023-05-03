@@ -18,13 +18,13 @@ struct UserAnimeListView: View {
                 .padding(.bottom, 4)
             
             ScrollView(.vertical, showsIndicators: false) {
-                LazyVStack(spacing: 20) {
+                VStack {
                     ForEach(searchObjController.animeList, id: \.node.id) { animeNode in
                         NavigationLink(destination: AnimeDetailView(animeId: animeNode.node.id)){
                             AnimeCardUser(anime: animeNode)
                         }
                     }
-                }.padding(.horizontal)
+                }.padding(EdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 8))
             }
             .onAppear {
                 if searchObjController.animeList.isEmpty{
@@ -51,7 +51,7 @@ struct AnimeCardUser: View {
     var anime: AnimeListItem
 
     var body: some View {
-        HStack() {
+        HStack{
             if let urlString = anime.node.main_picture.large,
                            let url = URL(string: urlString) {
                             AsyncImage(url: url) { phase in
@@ -76,16 +76,31 @@ struct AnimeCardUser: View {
                     .font(.headline)
                     .lineLimit(2)
                     .padding(.top, 4)
-                    .frame(maxWidth: 120, alignment: .leading)
+                    .frame(maxWidth: 260, alignment: .leading)
                 
-                Text("Status: \(anime.list_status.status.replacingOccurrences(of: "_", with: " "))")
+                Text("Status: \(anime.list_status.status.replacingOccurrences(of: "_", with: " ").capitalized)")
                     .font(.subheadline)
                     .lineLimit(2)
                     .padding(.top, 4)
-                    .frame(maxWidth: 120, alignment: .leading)
+                    .frame(maxWidth: .infinity, alignment: .leading)
                 
-                Text(anime.list_status.num_episodes_watched.description)
-                    .frame(alignment: .leading)
+                Text("Watched episodes: \(anime.list_status.num_episodes_watched.description)")
+                    .font(.subheadline)
+                    .padding(.top, 4)
+                    .frame(maxWidth: .infinity,alignment: .leading)
+                
+                if anime.list_status.score == 0 {
+                    Text("Hasn't been rated yet")
+                        .font(.subheadline)
+                        .padding(.top, 4)
+                        .frame(maxWidth: .infinity,alignment: .leading)
+                }
+                else{
+                    Text("My rating: \(anime.list_status.score.description)")
+                        .font(.subheadline)
+                        .padding(.top, 4)
+                        .frame(maxWidth: .infinity,alignment: .leading)
+                }
             }
         }
     }
