@@ -59,7 +59,7 @@ struct AnimeCardUser: View {
                                     image
                                         .resizable()
                                         .scaledToFit()
-                                        .frame(width: 120, height: 180)
+                                        .frame(width: 120, height: 180, alignment: .leading)
                                         .cornerRadius(10)
                                 } else {
                                     Image("MAL")
@@ -83,6 +83,9 @@ struct AnimeCardUser: View {
                     .lineLimit(2)
                     .padding(.top, 4)
                     .frame(maxWidth: 120, alignment: .leading)
+                
+                Text(anime.list_status.num_episodes_watched.description)
+                    .frame(alignment: .leading)
             }
         }
     }

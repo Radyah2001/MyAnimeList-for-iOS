@@ -198,6 +198,41 @@ class SearchObjController: ObservableObject {
                 
             }
         }
+    
+    func updateAnimeListStatus(animeId: Int, status: String, token: String) {
+        guard var urlComponents = URLComponents(string: "https://api.myanimelist.net/v2/anime/\(animeId)/my_list_status") else {
+            print("Invalid URL")
+            return
+        }
+
+        let statusQueryItem = URLQueryItem(name: "status", value: status)
+
+        urlComponents.queryItems = [statusQueryItem]
+
+        guard let url = urlComponents.url else {
+            print("Invalid URL")
+            return
+        }
+
+        var request = URLRequest(url: url)
+        request.httpMethod = "PUT"
+
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                print("Error: \(error)")
+                return
+            }
+
+            if let data = data, let responseString = String(data: data, encoding: .utf8) {
+                print("Response: \(responseString)")
+            }
+        }
+
+        task.resume()
+    }
+
 
     
 }

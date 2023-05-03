@@ -10,19 +10,21 @@ import AuthenticationServices
 struct ContentView: View {
     @EnvironmentObject var authManager: AuthManager
     @ObservedObject var searchObjController = SearchObjController.shared
-    @State var isLoggedIn = false
+    @State var IsLoggedIn = false
     var body: some View {
         NavigationStack{
             ScrollView(.vertical, showsIndicators: false) {
                 VStack {
                     HStack {
-                        if authManager.isLoggedIn() {
+                        if IsLoggedIn{
                             NavigationLink(destination: ProfileView()){
                                 Image(systemName: "person")
                                     .resizable()
+                                    .font(.title)
                                     .scaledToFit()
+                                    .foregroundColor(.blue)
+                                    .frame(width:40, height: 40)
                                     .padding()
-                                    .frame(width: 120, height: 120)
                             }.onAppear{
                                 Task{
                                     do {
@@ -33,34 +35,32 @@ struct ContentView: View {
                                 }
                             }
                         }
-                        else {}
-                        if authManager.isLoggedIn(){
-                            Text("Log Out")
-                                .foregroundColor(.red)
-                                .onTapGesture {
-                                    isLoggedIn = false
+                        else{
+                            Button(action: {
+                                if authManager.isLoggedIn(){
+                                    IsLoggedIn = true
                                 }
-                        }
-                    }
-                    HStack {
-                        Button(action: {
-                            authManager.authorize()
-                            isLoggedIn = true
-                            
-                        }) {
-                            Image("MAL")
-                                .resizable()
-                                .font(.title)
-                                .scaledToFit()
-                                .foregroundColor(.blue)
-                                .frame(width:40, height: 40)
-                                .padding()
+                                else{
+                                    IsLoggedIn = false
+                                    authManager.authorize()
+                                }
+                                
+                                
+                            }) {
+                                Image(systemName: "person")
+                                    .resizable()
+                                    .font(.title)
+                                    .scaledToFit()
+                                    .foregroundColor(.blue)
+                                    .frame(width:40, height: 40)
+                                    .padding()
+                            }
                         }
                         Text("MyAnimeList")
                             .font(.largeTitle)
                             .fontWeight(.bold)
                             .padding(.bottom, 5)
-                            .padding(.leading, 20)
+                            .padding(.leading, 15)
                         Spacer()
                         NavigationLink(destination: SearchView()) {
                             Image(systemName: "magnifyingglass")
@@ -160,6 +160,15 @@ struct ContentView: View {
             }
                      
             .navigationTitle("Home")
+            .onAppear{
+                if authManager.isLoggedIn(){
+                    IsLoggedIn = true
+                }
+                else {
+                    IsLoggedIn = false
+                }
+                
+            }
             
             
             Spacer()

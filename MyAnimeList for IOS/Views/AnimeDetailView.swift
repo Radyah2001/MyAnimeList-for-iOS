@@ -9,8 +9,12 @@ import SwiftUI
 
 struct AnimeDetailView: View {
     var animeId: Int
-    @StateObject var searchController = SearchObjController.shared
+    @ObservedObject var searchController = SearchObjController.shared
+    @EnvironmentObject var authManager: AuthManager
     @State private var isLoading = true
+    @State private var selectedStatus = "watching"
+    private let statusOptions: [String] = ["watching", "completed", "on_hold", "dropped", "plan_to_watch"]
+
 
     var body: some View {
             ScrollView {
@@ -75,6 +79,21 @@ struct AnimeDetailView: View {
                                                 Text(statistics.status?.plan_to_watch ?? "Unknown")
                                             }
                                             Text("Number of List Users: \(statistics.num_list_users?.description ?? "Unknown")")
+                                            if authManager.isLoggedIn(){
+                                                Picker(selection: Binding(
+                                                    get: { selectedStatus },
+                                                    set: { newValue in
+                                                        selectedStatus = newValue
+                                                        searchController.updateAnimeListStatus(animeId: animeId, status: selectedStatus, token: authManager.getAccessToken() ?? "0")
+                                                    }
+                                                ), label: Text("Status")) {
+                                                    ForEach(statusOptions, id: \.self) { status in
+                                                        Text(status.capitalized).tag(status)
+                                                    }
+                                                }
+                                                .pickerStyle(MenuPickerStyle())
+                                                .padding()
+                                                        }
                                         }
                                         .font(.body)
                                     }

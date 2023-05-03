@@ -2,6 +2,7 @@ import SwiftUI
 
 struct ProfileView: View {
     @StateObject var searchController = SearchObjController.shared
+    @EnvironmentObject var authManager: AuthManager
 
     var body: some View {
         NavigationStack {
@@ -11,13 +12,24 @@ struct ProfileView: View {
                     AnimeStatisticsSection(animeStats: searchController.userInfo.anime_statistics)
                     NavigationLink(destination: UserAnimeListView()){
                         Text("Anime User List")
+                            .font(.title)
+                            .fontWeight(.bold)
                     }
                 }
                 .padding()
+                .frame(maxWidth:.infinity,maxHeight: .infinity)
             }
             .background(Color(.systemGroupedBackground))
             .edgesIgnoringSafeArea(.bottom)
             .navigationTitle("Profile")
+            .toolbar{ToolbarItem(placement: .navigationBarTrailing) {
+                Button(action: {
+                    // Your logout action here
+                    authManager.logout()
+                }) {
+                    Text("Logout")
+                }}
+            }
         }
     }
 }
