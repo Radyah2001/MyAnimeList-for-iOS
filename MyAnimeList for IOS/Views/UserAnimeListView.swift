@@ -14,7 +14,8 @@ struct UserAnimeListView: View {
     var body: some View {
         VStack{
             Text("User Anime List")
-                .font(.title)
+                .font(.largeTitle)
+                .fontWeight(.bold)
                 .padding(.bottom, 4)
             
             ScrollView(.vertical, showsIndicators: false) {
