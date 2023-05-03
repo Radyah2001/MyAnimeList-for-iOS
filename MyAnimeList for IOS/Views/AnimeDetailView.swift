@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AnimeDetailView: View {
     var animeId: Int
-    @ObservedObject var searchController = SearchObjController.shared
+    @ObservedObject var searchController = HTTPClientController.shared
     @EnvironmentObject var authManager: AuthManager
     @State private var isLoading = true
     @State private var selectedStatus = "watching"

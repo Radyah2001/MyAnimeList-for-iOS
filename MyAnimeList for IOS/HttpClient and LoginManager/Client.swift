@@ -7,8 +7,8 @@
 
 import Foundation
 
-class SearchObjController: ObservableObject {
-    static let shared = SearchObjController()
+class HTTPClientController: ObservableObject {
+    static let shared = HTTPClientController()
     private init(){
         details = AnimeDetails()
         userInfo = UserInfo()

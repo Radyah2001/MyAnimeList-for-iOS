@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct ProfileView: View {
-    @StateObject var searchController = SearchObjController.shared
+    @ObservedObject var searchController = HTTPClientController.shared
     @EnvironmentObject var authManager: AuthManager
 
     var body: some View {

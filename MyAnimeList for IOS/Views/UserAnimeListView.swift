@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct UserAnimeListView: View {
-    @ObservedObject var searchObjController = SearchObjController.shared
+    @ObservedObject var searchObjController = HTTPClientController.shared
     @EnvironmentObject var authManager: AuthManager
 
     var body: some View {

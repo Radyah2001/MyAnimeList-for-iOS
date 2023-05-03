@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SearchView: View {
-    @StateObject var searchController = SearchObjController.shared
+    @ObservedObject var searchController = HTTPClientController.shared
     
     
     var body: some View {

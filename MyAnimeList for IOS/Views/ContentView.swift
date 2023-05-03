@@ -9,7 +9,7 @@ import AuthenticationServices
 
 struct ContentView: View {
     @EnvironmentObject var authManager: AuthManager
-    @ObservedObject var searchObjController = SearchObjController.shared
+    @ObservedObject var searchObjController = HTTPClientController.shared
     @State var IsLoggedIn = false
     var body: some View {
         NavigationStack{
