@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
+  <file original="en.lproj/Localizable.strings" source-language="en" target-language="en" datatype="plaintext">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.2" build-num="14C18"/>
+    </header>
+    <body>
+      <trans-unit id="Anime Search" xml:space="preserve">
+        <source>Anime Search</source>
+        <target>Anime Search</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Average score: %@" xml:space="preserve">
+        <source>Average score: %@</source>
+        <target>Average score: %@</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Completed:" xml:space="preserve">
+        <source>Completed:</source>
+        <target>Completed:</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Dropped:" xml:space="preserve">
+        <source>Dropped:</source>
+        <target>Dropped:</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Genres: %@" xml:space="preserve">
+        <source>Genres: %@</source>
+        <target>Genres: %@</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Home" xml:space="preserve">
+        <source>Home</source>
+        <target>Home</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="MyAnimeList" xml:space="preserve">
+        <source>MyAnimeList</source>
+        <target>MyAnimeList</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Number of List Users: %@" xml:space="preserve">
+        <source>Number of List Users: %@</source>
+        <target>Number of List Users: %@</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Number of episodes: %@" xml:space="preserve">
+        <source>Number of episodes: %@</source>
+        <target>Number of episodes: %@</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="On Hold:" xml:space="preserve">
+        <source>On Hold:</source>
+        <target>On Hold:</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Plan to Watch:" xml:space="preserve">
+        <source>Plan to Watch:</source>
+        <target>Plan to Watch:</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Popularity: %@" xml:space="preserve">
+        <source>Popularity: %@</source>
+        <target>Popularity: %@</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Rank: %@" xml:space="preserve">
+        <source>Rank: %@</source>
+        <target>Rank: %@</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Search anime" xml:space="preserve">
+        <source>Search anime</source>
+        <target>Search anime</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Statistics:" xml:space="preserve">
+        <source>Statistics:</source>
+        <target>Statistics:</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Status:" xml:space="preserve">
+        <source>Status:</source>
+        <target>Status:</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Status: %@" xml:space="preserve">
+        <source>Status: %@</source>
+        <target>Status: %@</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Synopsis:" xml:space="preserve">
+        <source>Synopsis:</source>
+        <target>Synopsis:</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Top Airing Anime" xml:space="preserve">
+        <source>Top Airing Anime</source>
+        <target>Top Airing Anime</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Top Anime" xml:space="preserve">
+        <source>Top Anime</source>
+        <target>Top Anime</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Top Upcoming Anime" xml:space="preserve">
+        <source>Top Upcoming Anime</source>
+        <target>Top Upcoming Anime</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Watching:" xml:space="preserve">
+        <source>Watching:</source>
+        <target>Watching:</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="en.lproj/MyAnimeList-for-IOS-InfoPlist.strings" source-language="en" target-language="en" datatype="plaintext">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.2" build-num="14C18"/>
+    </header>
+    <body>
+      <trans-unit id="CFBundleName" xml:space="preserve">
+        <source>MyAnimeList for IOS</source>
+        <target>MyAnimeList for IOS</target>
+        <note>Bundle name</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
