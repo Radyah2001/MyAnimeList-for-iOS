@@ -29,7 +29,28 @@ final class MyAnimeList_for_IOSUITests: XCTestCase {
 
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
+    func testChangeBackgroundColor() throws {
+        let app = XCUIApplication()
+        app.launch()
+        // Tap the "Change Color" button to change the background color
+        let changeColorButton = app.buttons["Change Color"]
+        changeColorButton.tap()
 
+        // Assert that the background color has changed to Color("Color1")
+        let expectedColor = UIColor(named: "Color1")!
+        let actualColor = app.windows.firstMatch.value(forKey: "backgroundColor") as! UIColor
+        XCTAssertEqual(actualColor, expectedColor)
+
+        // Tap the "Change Color" button again to change the background color back to white
+        changeColorButton.tap()
+
+        // Assert that the background color has changed back to white
+        let expectedWhite = UIColor.white
+        let actualWhite = app.windows.firstMatch.value(forKey: "backgroundColor") as! UIColor
+        XCTAssertEqual(actualWhite, expectedWhite)
+    }
+
+    
     func testLaunchPerformance() throws {
         if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
             // This measures how long it takes to launch your application.

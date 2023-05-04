@@ -8,6 +8,7 @@ import SwiftUI
 import AuthenticationServices
 
 struct ContentView: View {
+    @State public var bgColor = Color.white
     @EnvironmentObject var authManager: AuthManager
     @ObservedObject var searchObjController = HTTPClientController.shared
     @State var IsLoggedIn = false
@@ -160,6 +161,25 @@ struct ContentView: View {
             }
                      
             .navigationTitle("Home")
+            .toolbar{
+                
+                    ToolbarItem(placement: .navigationBarTrailing){
+                        Button(action: {
+                            if bgColor == Color.white {
+                                bgColor = Color("Color1")
+                            }
+                            else {
+                                bgColor = Color.white
+                                
+                            }
+                        })
+                            {Text("Change Color")
+                                
+                        }
+                    }
+            }
+            .background(bgColor)
+            .frame(maxWidth:.infinity,maxHeight: .infinity)
             .onAppear{
                 if authManager.isLoggedIn(){
                     IsLoggedIn = true
@@ -174,7 +194,6 @@ struct ContentView: View {
             Spacer()
         }
         .frame(maxWidth:.infinity,maxHeight: .infinity)
-        .background(Color("Color1"))
         .tint(Color.black)
     }
 }
