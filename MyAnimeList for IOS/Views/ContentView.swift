@@ -176,9 +176,10 @@ struct ContentView: View {
                             {Text("Change Color")
                                 
                         }
+                            .accessibilityIdentifier("changeColorButton")
                     }
             }
-            .background(bgColor)
+            .background(bgColor.accessibility(identifier: bgColor == Color.white ? "whiteBackground" : "color1Background"))
             .frame(maxWidth:.infinity,maxHeight: .infinity)
             .onAppear{
                 if authManager.isLoggedIn(){
@@ -193,6 +194,7 @@ struct ContentView: View {
             
             Spacer()
         }
+        .background(bgColor)
         .frame(maxWidth:.infinity,maxHeight: .infinity)
         .tint(Color.black)
     }

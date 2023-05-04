@@ -18,6 +18,7 @@ struct SearchView: View {
                     TextField("Search anime", text: $searchController.query, onCommit: {
                         searchController.search()
                     }).padding(.leading, 18)
+                        .accessibilityIdentifier("searchTextField")
                     List(searchController.results, id: \.node.id) { node in
                         NavigationLink(destination: AnimeDetailView(animeId: node.node.id ?? 1)){
                             HStack {

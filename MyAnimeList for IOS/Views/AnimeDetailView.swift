@@ -38,6 +38,7 @@ struct AnimeDetailView: View {
                                         }
                                     }
                                     Text("Average score: \(animeDetails.mean?.description ?? "Unknown")")
+                                        .accessibilityIdentifier("Average score")
                                     Text("Rank: \(animeDetails.rank?.description ?? "Unknown")")
                                     Text("Popularity: \(animeDetails.popularity?.description ?? "Unknown")")
                                     Text("Status: \(animeDetails.status?.capitalized.replacingOccurrences(of: "_", with: " ") ?? "Unknown")")
@@ -119,6 +120,7 @@ struct AnimeDetailView: View {
             searchController.resetDetails()
         }
         .navigationTitle(searchController.details.title ?? "Unknown")
+        .accessibilityIdentifier("animeTitle")
     }
 }
 

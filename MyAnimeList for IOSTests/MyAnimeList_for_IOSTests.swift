@@ -6,30 +6,85 @@
 //
 
 import XCTest
+@testable import MyAnimeList_for_IOS
 
-final class MyAnimeList_for_IOSTests: XCTestCase {
+class HTTPClientControllerTests: XCTestCase {
+    var httpClientController: HTTPClientController!
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    override func setUp() {
+        super.setUp()
+        httpClientController = HTTPClientController.shared
     }
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    override func tearDown() {
+        httpClientController = nil
+        super.tearDown()
     }
+    func testSearch() {
+        let expectation = XCTestExpectation(description: "Search anime")
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
+        httpClientController.query = "Naruto"
+        httpClientController.search()
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        measure {
-            // Put the code you want to measure the time of here.
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+            XCTAssertGreaterThan(self.httpClientController.results.count, 0)
+            expectation.fulfill()
         }
+
+        wait(for: [expectation], timeout: 10)
+    }
+    func testGetTrendingAnime() async throws {
+        let expectation = XCTestExpectation(description: "Get trending anime")
+
+        do {
+            try await httpClientController.getTrendingAnime()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                XCTAssertGreaterThan(self.httpClientController.topAnime.count, 0)
+                expectation.fulfill()
+            }
+        } catch {
+            XCTFail("Error: \(error)")
+        }
+
+        wait(for: [expectation], timeout: 10)
+    }
+    func testGetUpcomingAnime() async throws {
+        let expectation = XCTestExpectation(description: "Get upcoming anime")
+
+        do {
+            try await httpClientController.getUpcomingAnime()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                XCTAssertGreaterThan(self.httpClientController.upcomingAnime.count, 0)
+                expectation.fulfill()
+            }
+        } catch {
+            XCTFail("Error: \(error)")
+        }
+
+        wait(for: [expectation], timeout: 10)
+    }
+    func testGetAiringAnime() async throws {
+        let expectation = XCTestExpectation(description: "Get airing anime")
+
+        do {
+            try await httpClientController.getAiringAnime()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                XCTAssertGreaterThan(self.httpClientController.airingAnime.count, 0)
+                expectation.fulfill()
+            }
+        } catch {
+            XCTFail("Error: \(error)")
+        }
+
+        wait(for: [expectation], timeout: 10)
     }
 
+
+
+    
+    
+
+    
+    
 }
+

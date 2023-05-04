@@ -22,41 +22,124 @@ final class MyAnimeList_for_IOSUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
-        // UI tests must launch the application that they test.
-        let app = XCUIApplication()
-        app.launch()
-
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    func testChangeBackgroundColor() throws {
-        let app = XCUIApplication()
-        app.launch()
-        // Tap the "Change Color" button to change the background color
-        let changeColorButton = app.buttons["Change Color"]
-        changeColorButton.tap()
-
-        // Assert that the background color has changed to Color("Color1")
-        let expectedColor = UIColor(named: "Color1")!
-        let actualColor = app.windows.firstMatch.value(forKey: "backgroundColor") as! UIColor
-        XCTAssertEqual(actualColor, expectedColor)
-
-        // Tap the "Change Color" button again to change the background color back to white
-        changeColorButton.tap()
-
-        // Assert that the background color has changed back to white
-        let expectedWhite = UIColor.white
-        let actualWhite = app.windows.firstMatch.value(forKey: "backgroundColor") as! UIColor
-        XCTAssertEqual(actualWhite, expectedWhite)
-    }
-
     
-    func testLaunchPerformance() throws {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
-            // This measures how long it takes to launch your application.
-            measure(metrics: [XCTApplicationLaunchMetric()]) {
-                XCUIApplication().launch()
-            }
+    func testNavigateToSearchViewAndGoBack() throws {
+            // Launch the app
+            let app = XCUIApplication()
+            app.launch()
+
+            // Tap on the search button (the magnifying glass icon)
+            app.buttons["Search"].tap()
+
+            // Verify that the search view is displayed
+            XCTAssertTrue(app.navigationBars["Anime Search"].exists)
+
+            // Go back to the main view
+            app.navigationBars["Anime Search"].buttons["Home"].tap()
+
+            // Verify that the main view is displayed
+            XCTAssertTrue(app.navigationBars["Home"].exists)
         }
+    
+    func testSearchForDragonBallAndSelectFirstResult() {
+        // Launch the app
+        let app = XCUIApplication()
+        app.launch()
+
+        // Tap on the search button (the magnifying glass icon)
+        app.buttons["Search"].tap()
+
+        // Verify that the search view is displayed
+        XCTAssertTrue(app.navigationBars["Anime Search"].exists)
+
+        // Type "Dragon Ball" into the search field and press enter
+        let searchField = app.textFields.firstMatch
+        searchField.tap()
+        searchField.typeText("Dragon Ball")
+        searchField.typeText("\n")
+
+        // Wait for the search results to load
+        let firstResultCell = app.cells.element(boundBy: 0)
+        expectation(for: NSPredicate(format: "exists == 1"), evaluatedWith: firstResultCell, handler: nil)
+        waitForExpectations(timeout: 10, handler: nil)
+
+        // Tap on the first result
+        firstResultCell.tap()
+
     }
+    func testProfileButtonTap() throws {
+        let app = XCUIApplication()
+        app.launch()
+
+        let profileButton = app.buttons["person"].firstMatch
+        XCTAssertTrue(profileButton.waitForExistence(timeout: 5))
+        profileButton.tap()
+
+        // Check if the correct view is displayed (profile view or authorization view)
+        let loggedIn = app.staticTexts["Profile"].firstMatch.exists
+        let notLoggedIn = app.staticTexts["Home"].firstMatch.exists
+
+        XCTAssertTrue(loggedIn || notLoggedIn)
+    }
+    
+    func testChangeColorButtonTap() throws {
+        let app = XCUIApplication()
+        app.launch()
+
+        let changeColorButton = app.buttons["changeColorButton"].firstMatch
+        XCTAssertTrue(changeColorButton.waitForExistence(timeout: 5))
+
+        // Check the initial background color
+        let whiteBackground = app.otherElements["whiteBackground"].firstMatch
+        XCTAssertTrue(whiteBackground.waitForExistence(timeout: 5))
+
+        // Tap the "Change Color" button
+        changeColorButton.tap()
+
+        // Check if the background color has changed
+        let color1Background = app.otherElements["color1Background"].firstMatch
+        XCTAssertTrue(color1Background.waitForExistence(timeout: 5))
+
+        // Tap the "Change Color" button again
+        changeColorButton.tap()
+
+        // Check if the background color has changed back to white
+        XCTAssertTrue(whiteBackground.waitForExistence(timeout: 5))
+    }
+    
+    func testAnimeDetailViewLoadingAndDataDisplay() throws {
+        let app = XCUIApplication()
+        app.launch()
+        
+        // Tap on the search button (the magnifying glass icon)
+        app.buttons["Search"].tap()
+
+        // Verify that the search view is displayed
+        XCTAssertTrue(app.navigationBars["Anime Search"].exists)
+
+        // Type "Dragon Ball" into the search field and press enter
+        let searchField = app.textFields.firstMatch
+        searchField.tap()
+        searchField.typeText("Dragon Ball")
+        searchField.typeText("\n")
+
+        // Wait for the search results to load
+        let firstResultCell = app.cells.element(boundBy: 0)
+        expectation(for: NSPredicate(format: "exists == 1"), evaluatedWith: firstResultCell, handler: nil)
+        waitForExpectations(timeout: 10, handler: nil)
+
+        // Tap on the first result
+        firstResultCell.tap()
+
+
+
+        // Check if the anime details are displayed, e.g., by verifying if the average score is displayed
+        let averageScoreLabel = app.staticTexts["Average score"].firstMatch
+        XCTAssertTrue(averageScoreLabel.waitForExistence(timeout: 5))
+    }
+
+
+
+
+
 }
